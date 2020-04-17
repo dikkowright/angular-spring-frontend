@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-bookstore"
+    }
+  },
+  "defaultProject": "angular-bookstore",
+  "cli": {
+    "analytics": false
+  }
 }
