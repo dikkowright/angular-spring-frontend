@@ -10,8 +10,13 @@ import { BookService } from './services/book.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BookCategoryComponent } from './components/book-category/book-category.component';
 import { SearchComponent } from './components/search/search.component';
+import { BookDeatailsComponent } from './components/book-deatails/book-deatails.component';
+import{NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { CartStatusComponent } from './components/cart-status/cart-status.component'
+
 
 const routes: Routes = [
+{path: 'book/:id', component: BookDeatailsComponent}, 
 {path: 'book', component: BookListComponent},
 {path: 'search/:keyword', component: BookListComponent},
 {path: 'category/:id',component: BookListComponent},
@@ -26,13 +31,20 @@ const routes: Routes = [
     BookListComponent,
     PageNotFoundComponent,
     BookCategoryComponent,
-    SearchComponent
+    SearchComponent,
+    BookDeatailsComponent,
+    CartStatusComponent
+    
+    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgbModule,
     RouterModule.forRoot(routes)
-  ],
+   
+    
+ ],
   providers: [
     BookService
   ],

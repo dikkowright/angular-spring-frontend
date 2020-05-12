@@ -2,42 +2,75 @@
 
   <div class="col-lg-3">
 
-
-   <app-book-category></app-book-category>
+    <app-book-category></app-book-category>
 
   </div>
-  <!-- /.col-lg-3 -->
 
   <div class="col-lg-9">
 
     <div class="row">
+
       <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of books">
-          <div class="card h-100">
-            <a href="#"><img class="card-img-top img-responsive" [src]="book.image_url"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#">{{book.name}}</a>
-              </h4>
-              <h5>{{book.unit_price | currency:'N'}}</h5>
-              <p class="card-text text-truncate">{{book.description}}</p>
-            </div>
-            <div class="card-footer">
-              <button class = "btn btn-primary float-right">Add Cart</button>
-            </div>
+        <div class="card h-100">
+          <a routerLink="/book/{{book.id}}"><img class="card-img-top img-responsive" [src]="book.image_url"
+             height="250" width="100"></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a routerLink="/book/{{book.id}}">{{book.name}}</a>
+            </h4>
+            <h5>{{book.unit_price | currency:'N'}}</h5>
+            <p class="card-text text-truncate">{{book.description}}</p>
           </div>
-        </div> 
-        <div *ngIf="books?.length == 0" class="col-md-12 alert alert-warning mt-3">
-          No Books Found
+          <div class="card-footer">
+            <!-- (click)="addToCart(book)" -->
+            <button class="btn btn-primary float-right" >Add Cart</button>
+          </div>
         </div>
-  </div>
+      </div>
+      <div *ngIf="books?.length == 0" class="col-md-12 alert alert-warning mt-3">
+        No Books Found
+      </div>
 
-      <!-- <app-book-list></app-book-list> -->
-    
-    
+    </div>
+    <!-- /.row -->
+    <!-- pagination selector goes here -->
+    <div class="row">
+    <!-- handle page size -->
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="mr-2">Page Size:</span>
+          </div>
 
-  </div>
-  <!-- /.col-lg-9 -->
+          <div class="col-md-8">
+            <select (change)="updatePageSize($event.target.value)" 
+                     class="form-control-sm"
+                     style="width: 20%;">
+              <option selected>5</option>
+              <option >10</option>
+              <option >20</option>
+              <option >50</option>
+            </select>
+        </div>
+      </div>
+    </div>
 
-</div>
-<!-- /.row -->
+    <div class="col-md-6">
+      
+        <ngb-pagination [(page)] = "currentPage"
+                           [pageSize] = "pageSize"
+                           [collectionSize] = "totalRecords"
+                           (pageChange) = "listBooks()"
+                           class="d-flex justify-content-end">
+                           <ng-template ngbPaginationPrevious>Prev</ng-template>
+                           <ng-template ngbPaginationNext>Next</ng-template>
+                           <ng-template ngbPaginationFirst>First</ng-template>
+                           <ng-template ngbPaginationLast>Last</ng-template>
+                          </ngb-pagination> 
+    </div>
 
+   </div>
+ </div>
+      <!-- /.col-lg-9 -->
+    </div>
+    <!-- /.row -->
