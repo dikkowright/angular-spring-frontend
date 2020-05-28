@@ -12,12 +12,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { BookCategoryComponent } from './components/book-category/book-category.component';
 import { SearchComponent } from './components/search/search.component';
 import { BookDeatailsComponent } from './components/book-deatails/book-deatails.component';
-import{NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import { CartStatusComponent } from './components/cart-status/cart-status.component'
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component'
 
 
 const routes: Routes = [
-{path: 'book/:id', component: BookDeatailsComponent}, 
+{path: 'book/:id', component: BookDeatailsComponent},
+{path: 'cart-details', component: CartDetailsComponent}, 
 {path: 'book', component: BookListComponent},
 {path: 'search/:keyword', component: BookListComponent},
 {path: 'category/:id',component: BookListComponent},
@@ -34,7 +36,8 @@ const routes: Routes = [
     BookCategoryComponent,
     SearchComponent,
     BookDeatailsComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    CartDetailsComponent
     
     
   ],
