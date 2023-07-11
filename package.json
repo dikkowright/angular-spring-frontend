@@ -27,7 +27,7 @@
     "jw-angular-pagination": "^1.1.0",
     "ngx-spinner": "^9.0.2",
     "rxjs": "~6.5.4",
-    "semver": "^7.3.2",
+    "semver": "^7.5.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
